@@ -1,0 +1,40 @@
+/* ============================================================
+   Typographie — TheSans (UNIGE)
+   Échelle fluide. Titres en ExtraBold (800), corps en Plain (400),
+   sous-titres / labels en SemiBold (600). Interlettrage négatif sur
+   les grands titres ; eyebrows en majuscules espacées.
+   ============================================================ */
+:root{
+  /* --- Familles --- */
+  --font-sans:"TheSans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font:var(--font-sans);            /* alias historique */
+
+  /* --- Graisses --- */
+  --fw-light:300;       /* @kind font */
+  --fw-regular:400;     /* @kind font */
+  --fw-semibold:600;    /* @kind font */
+  --fw-bold:700;        /* @kind font */
+  --fw-extrabold:800;   /* @kind font */
+
+  /* --- Échelle de taille (fluide) --- */
+  --text-display:clamp(38px,5.6vw,68px);  /* héros H1 */
+  --text-h2:clamp(30px,4vw,46px);         /* titres de section */
+  --text-h3:clamp(24px,3vw,36px);         /* titres de fiche */
+  --text-title:18.5px;                    /* titres de carte */
+  --text-lead:clamp(17px,1.7vw,21px);     /* chapô */
+  --text-body:16px;                       /* corps */
+  --text-sm:14.5px;                       /* corps secondaire */
+  --text-xs:13px;                         /* méta / légendes */
+  --text-eyebrow:13px;                    /* sur-titre */
+
+  /* --- Interlignage --- */
+  --leading-tight:1.06;
+  --leading-snug:1.22;
+  --leading-normal:1.6;
+
+  /* --- Interlettrage --- */
+  --tracking-display:-.025em;
+  --tracking-tight:-.02em;
+  --tracking-eyebrow:.12em;   /* eyebrows MAJUSCULES */
+  --tracking-label:.04em;     /* labels de formulaire */
+}

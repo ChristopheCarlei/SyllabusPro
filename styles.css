@@ -1,0 +1,10 @@
+/* ============================================================
+   FPSE Design System — point d'entrée global
+   Les consommateurs lient CE fichier uniquement.
+   N'écrire ici QUE des @import (aucune règle).
+   ============================================================ */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/base.css";

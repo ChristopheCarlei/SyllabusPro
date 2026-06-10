@@ -1,0 +1,41 @@
+/* ============================================================
+   Espacement, rayons, ombres & disposition
+   Inspiré de la charte de l'Observatoire FPSE :
+   coins doux (14px), ombres très légères et diffuses, contenu
+   plafonné à 1280px avec gouttière fluide.
+   ============================================================ */
+:root{
+  /* --- Échelle d'espacement (base 4) --- */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+
+  /* --- Rythme de section (fluide) --- */
+  --section-y:clamp(48px,7vw,88px);  /* @kind spacing */
+
+  /* --- Rayons --- */
+  --radius:14px;        /* cartes, blocs */
+  --radius-sm:10px;     /* inputs, vignettes */
+  --radius-pill:999px;  /* boutons, tags */
+
+  /* --- Ombres --- */
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px -12px rgba(16,24,40,.16);
+  --shadow-logo:0 6px 18px rgba(0,0,0,.1);
+  --shadow-float:0 2px 14px rgba(0,133,127,.4);
+
+  /* --- Disposition --- */
+  --content:min(1280px,calc(100vw - 48px));  /* @kind spacing */
+  --content-narrow:880px;
+
+  /* --- Filets de marque --- */
+  --strip:5px;          /* bandeau supérieur rose */
+  --accent-bar:3px;     /* liseré sous les couvertures */
+}

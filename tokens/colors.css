@@ -1,0 +1,56 @@
+/* ============================================================
+   Couleurs — charte UNIGE / FPSE
+   Le teal est la couleur officielle de la FPSE ; le rose-magenta
+   est la couleur institutionnelle de l'Université de Genève,
+   utilisée en accent. Tons neutres froids dérivés.
+   ============================================================ */
+:root{
+  /* --- Marque : teal FPSE --- */
+  --teal:#00B1AE;          /* couleur officielle FPSE (vif) */
+  --teal-deep:#00857F;     /* version assombrie — texte & aplats */
+  --teal-ink:#0A4C4A;      /* texte sur fond clair teinté */
+
+  /* --- Marque : rose UNIGE --- */
+  --rose:#CF0063;          /* couleur institutionnelle UNIGE (accent) */
+  --rose-deep:#A8004F;     /* rose assombri — texte sur fond clair */
+
+  /* --- Encre & neutres froids --- */
+  --ink:#172033;           /* texte principal */
+  --muted:#5A6477;         /* texte secondaire */
+  --line:#E4E7EC;          /* filets / bordures */
+  --line-strong:#D4D9E0;   /* bordures appuyées / inputs */
+
+  /* --- Surfaces --- */
+  --bg:#FFFFFF;            /* fond page */
+  --bg-soft:#F6F8F8;      /* fond doux (sections, inputs) */
+  --bg-teal:#EAF6F5;      /* aplat teal très clair (tags, blocs) */
+  --bg-rose:#FBEAF1;      /* aplat rose très clair (tags, blocs) */
+
+  /* --- État (info / alerte) --- */
+  --warn-bg:#FFF3CD;      /* fond badge "à compléter" */
+  --warn-ink:#7B5A00;     /* texte badge "à compléter" */
+  --warn-line:#E0A800;    /* bordure badge "à compléter" */
+
+  /* ============================================================
+     Alias sémantiques — référez-vous à ceux-ci dans les composants
+     ============================================================ */
+  --text-strong:var(--ink);
+  --text-body:var(--ink);
+  --text-muted:var(--muted);
+  --text-brand:var(--teal-deep);
+  --text-accent:var(--rose);
+  --text-on-brand:#FFFFFF;
+
+  --surface-page:var(--bg);
+  --surface-card:var(--bg);
+  --surface-soft:var(--bg-soft);
+  --surface-brand:var(--teal-deep);
+  --surface-accent:var(--rose);
+  --surface-tint-teal:var(--bg-teal);
+  --surface-tint-rose:var(--bg-rose);
+
+  --border-subtle:var(--line);
+  --border-strong:var(--line-strong);
+
+  --focus-ring:rgba(0,133,127,.4);
+}

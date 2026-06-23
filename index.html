@@ -35,7 +35,7 @@
   .hub-sub{font-size:19px;color:var(--muted);margin:0}
   .hub-sub strong{color:var(--ink);font-weight:600}
 
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
   .tile{
     position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;
     min-height:185px;padding:22px 24px;text-align:left;cursor:pointer;
@@ -56,6 +56,11 @@
   .tile.wide{grid-column:span 2;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:20px}
   .tile.wide>div{flex:1;min-width:0}
   .tile.wide h3{font-size:26px}
+  .tile .t-ic{display:flex;margin-bottom:2px}
+  .tile .t-ic svg{width:30px;height:30px;color:var(--teal)}
+  .tile.accent .t-ic svg{color:var(--rose)}
+  .tile.wide .t-ic{align-self:flex-end;margin-bottom:0}
+  .tile.wide .t-ic svg{width:36px;height:36px}
 
   /* ---- Timeline du hub ---- */
   .hub-tl{margin-top:auto;padding-top:30px}
@@ -101,6 +106,8 @@
   .secnav button{appearance:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:34px;height:34px;padding:0 10px;border-radius:999px;border:1.5px solid var(--border-strong);background:#fff;font-size:13.5px;font-weight:800;color:var(--muted);transition:border-color .15s,color .15s,background .15s}
   .secnav button:hover{border-color:rgba(0,133,127,.55);color:var(--teal-deep)}
   .secnav button .nm{display:none;font-weight:700;letter-spacing:.01em}
+  .secnav button .ic{display:inline-flex;align-items:center}
+  .secnav button .ic svg{width:17px;height:17px}
   .secnav button.on{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;padding:0 16px;cursor:default}
   .secnav button.on .nm{display:inline}
 
@@ -162,6 +169,36 @@
   table.plan tr.break td{background:var(--bg-teal);color:var(--teal-ink);font-weight:600;text-align:center;border-bottom:1px solid var(--line)}
   .dl-pill{display:inline-block;padding:2px 11px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid rgba(207,0,99,.4);color:var(--rose-deep);white-space:nowrap;margin:1px 0}
 
+  /* ---- Plan en tuiles (séances) ---- */
+  .splan{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .splan .break{grid-column:1/-1;text-align:center;padding:11px;border-radius:var(--radius);background:var(--bg-teal);color:var(--teal-ink);font-weight:600;font-size:14px;border:1px dashed rgba(0,133,127,.35)}
+  .scard{display:flex;flex-direction:column;gap:9px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+  .scard.eval{border-top:3px solid var(--rose);background:var(--bg-rose)}
+  .sc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .sc-num{font-size:12px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--teal-deep);border-radius:7px;padding:3px 9px}
+  .scard.eval .sc-num{background:var(--rose-deep)}
+  .sc-date{font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .sc-title{flex-basis:100%;margin:0;font-size:18px;font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+  .sc-pb{margin:0;font-size:14px;font-weight:600;font-style:italic;color:var(--teal-deep)}
+  .scard.eval .sc-pb{color:var(--rose-deep)}
+  .sc-desc{margin:0;font-size:13.5px;line-height:1.5;color:#3C4658}
+  .sc-meta{display:flex;flex-direction:column;gap:6px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+  .sc-row{display:flex;gap:10px;font-size:12.5px;align-items:baseline}
+  .sc-k{flex:none;width:62px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:1px}
+  .sc-v{color:#3C4658;font-weight:600;line-height:1.4}
+  .sc-v.dl{color:var(--rose-deep)}
+  .plan tbody tr[data-seance]{cursor:pointer}
+  .plan tbody tr.eval-row td{background:var(--bg-rose)}
+  .plan tbody tr.eval-row td.num{color:var(--rose-deep)}
+  .plan tbody tr.eval-row:hover td{background:var(--bg-rose)}
+  .plan tbody tr[data-seance] td.num::after{content:" →";color:var(--teal);font-weight:800;opacity:0;transition:opacity .15s}
+  .plan tbody tr[data-seance]:hover td.num::after{opacity:1}
+  .plan-detail-h{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:36px 0 16px;padding-top:26px;border-top:1px solid var(--line)}
+  @keyframes scard-flash{0%,100%{box-shadow:var(--shadow)}25%,60%{box-shadow:0 0 0 3px var(--teal),var(--shadow)}}
+  .scard.flash{animation:scard-flash 1.2s ease}
+  .scard.eval.flash{animation-name:scard-flash-r}
+  @keyframes scard-flash-r{0%,100%{box-shadow:var(--shadow)}25%,60%{box-shadow:0 0 0 3px var(--rose),var(--shadow)}}
+
   /* ---- Projets ---- */
   .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   .proj{display:flex;align-items:center;gap:18px;padding:18px 22px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -178,7 +215,7 @@
   .eval-card .when{font-size:14px;font-weight:700;color:var(--teal-deep);margin:0 0 14px}
   .eval-card.rose .when{color:var(--rose-deep)}
   .eval-card ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:lv}
-  .eval-card.rose ol{counter-reset:lv 4}
+  .eval-card.rose ol{counter-reset:lv 0}
   .eval-card ol li::before{counter-increment:lv;content:counter(lv) ".";flex:none;width:18px;color:var(--muted);font-weight:600}
   .eval-card ol li{font-size:15px;color:#3C4658;display:flex;align-items:baseline;gap:12px}
   .eval-card ol li .lbl{flex:1}
@@ -226,52 +263,52 @@
     <div class="tiles">
       <button class="tile" type="button" data-go="objectifs">
         <span class="t-num">01</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
         <h3>Objectifs</h3>
         <p>Ce que vous saurez faire à l'issue du cours</p>
       </button>
-      <button class="tile" type="button" data-go="informations">
-        <span class="t-num">02</span>
-        <h3>Informations</h3>
-        <p>Pédagogie par projet, horaires, salle, contact</p>
-      </button>
       <button class="tile" type="button" data-go="ressources">
-        <span class="t-num">03</span>
+        <span class="t-num">02</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l3 3"/><path d="M5 19l4-1 9-9-3-3-9 9z"/></svg></span>
         <h3>Ressources</h3>
         <p>Outils techno-pédagogiques &amp; matériel en prêt</p>
       </button>
       <button class="tile" type="button" data-go="plan">
-        <span class="t-num">04</span>
+        <span class="t-num">03</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>
         <h3>Plan</h3>
         <p>Les 13 séances du semestre</p>
       </button>
       <button class="tile" type="button" data-go="projets">
-        <span class="t-num">05</span>
+        <span class="t-num">04</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 010 6"/><path d="M18 15c2 .5 3 2 3 5"/></svg></span>
         <h3>Projets &amp; groupes</h3>
         <p>Projets authentiques de commanditaires externes</p>
       </button>
       <button class="tile accent" type="button" data-go="evaluation">
-        <span class="t-num">06</span>
+        <span class="t-num">05</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg></span>
         <h3>Évaluation</h3>
         <p>Contrôle continu — livrables, pas d'examen</p>
       </button>
-      <button class="tile accent wide" type="button" data-go="dates">
-        <span class="t-num">07</span>
-        <div>
-          <h3>Dates importantes</h3>
-          <p>Échéances des livrables et des évaluations</p>
-        </div>
+      <button class="tile accent" type="button" data-go="dates">
+        <span class="t-num">06</span>
+        <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3>Dates importantes</h3>
+        <p>Échéances des livrables et des évaluations</p>
       </button>
     </div>
 
     <div class="hub-tl">
       <p class="tl-title">Dates importantes — Printemps 2027</p>
       <div class="tl-row">
-        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">23 fév.</span><span class="w">Début du cours · S01</span></div>
-        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">2 mars</span><span class="w">Groupes &amp; choix des projets · S02</span></div>
-        <div class="ms off" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">30 mars</span><span class="w">Pas de cours · Pâques</span></div>
-        <div class="ms rose" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">20 avril</span><span class="w">Évaluation intermédiaire · S08</span></div>
-        <div class="ms rose" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">25 mai</span><span class="w">Évaluation finale · S13</span></div>
-        <div class="ms rose" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">21 août</span><span class="w">Fin du délai de rattrapage</span></div>
+        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">2 mars</span><span class="w">Constitution des groupes</span></div>
+        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">7 mars</span><span class="w">Slide prénom finalisée</span></div>
+        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">6 avril</span><span class="w">Analyse de l'existant en 180° (1 slide)</span></div>
+        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">13 avril</span><span class="w">Dossier de faisabilité (+ 1 slide)</span></div>
+        <div class="ms rose" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">20 avril</span><span class="w">Présentation intermédiaire (évaluée)</span></div>
+        <div class="ms" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">27 avril</span><span class="w">Objectif &amp; livrable</span></div>
+        <div class="ms rose" data-go="dates" role="link" tabindex="0" title="Voir toutes les échéances"><span class="d">25 mai</span><span class="w">Livrable final</span></div>
       </div>
     </div>
   </section>
@@ -285,42 +322,12 @@
     </div>
     <div class="sec-body">
       <div class="bloom">
-        <div class="step"><span class="lvl">Rappeler</span><p><strong>Rappeler des concepts clés</strong> liés à l'utilisation de la vidéo en formation, en identifiant les différentes approches et leurs usages pédagogiques.</p></div>
-        <div class="step"><span class="lvl">Comprendre</span><p><strong>Comprendre les outils et pratiques pédagogiques</strong>, en expliquant leur pertinence et leur application dans des contextes éducatifs variés.</p></div>
-        <div class="step"><span class="lvl">Appliquer</span><p><strong>Appliquer des stratégies et méthodes d'apprentissage</strong> adaptées en fonction des besoins des apprenant·es, en utilisant des situations pédagogiques concrètes.</p></div>
-        <div class="step"><span class="lvl">Analyser</span><p><strong>Analyser les enjeux et défis liés à la professionnalisation</strong> dans le domaine de l'éducation, en évaluant différentes perspectives et leur impact.</p></div>
-        <div class="step"><span class="lvl">Évaluer</span><p><strong>Évaluer l'impact des interventions pédagogiques</strong> en élaborant un projet pédagogique basé sur des critères de pertinence et d'efficacité.</p></div>
-        <div class="step"><span class="lvl">Créer</span><p><strong>Créer un livrable éducatif pertinent</strong>, en concevant des ressources pédagogiques innovantes et adaptées à une vraie demande.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= INFORMATIONS ================= -->
-  <section class="view" id="v-informations" data-screen-label="Informations">
-    <div class="sec-head">
-      <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">02 · Informations générales</span>
-      <span class="sec-title">Comment fonctionne ce cours</span>
-    </div>
-    <div class="sec-body">
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Le principe</h3>
-          <ul>
-            <li>Ce cours repose sur la <strong>pédagogie par projet</strong>, combinant théorie et pratique. Des <strong>projets authentiques</strong> vous sont proposés en groupe par des commanditaires externes.</li>
-            <li>L'évaluation est en <strong>contrôle continu</strong> et porte exclusivement sur les livrables : <strong>pas d'examen</strong>.</li>
-            <li>La <strong>participation au cours est obligatoire</strong>, elle est incluse dans l'évaluation.</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3>Pratique</h3>
-          <div class="meta-list">
-            <div class="row"><span class="k">Horaire</span><span class="v" style="white-space:nowrap;">Mardi 14h15 – 15h45</span></div>
-            <div class="row"><span class="k">Salle</span><span class="v">M1140</span></div>
-            <div class="row"><span class="k">Groupes</span><span class="v">Travail de groupe possible de 16h à 18h en M2140 <span class="badge-tbc">à confirmer 2027</span></span></div>
-            <div class="row"><span class="k">Contact</span><span class="v"><a href="mailto:christophe.carlei@unige.ch">christophe.carlei@unige.ch</a></span></div>
-          </div>
-        </div>
+        <div class="step"><span class="lvl">Rappeler</span><p><strong>Rappeler comment fonctionnent la mémoire et l'apprentissage</strong>, et distinguer les neuro-mythes des connaissances établies sur le cerveau.</p></div>
+        <div class="step"><span class="lvl">Comprendre</span><p><strong>Comprendre les étapes d'un projet d'intervention</strong> — avant-projet, faisabilité, planification — et comment l'IA et les outils numériques accélèrent le travail.</p></div>
+        <div class="step"><span class="lvl">Appliquer</span><p><strong>Appliquer des méthodes de gestion de projet</strong> (jalons, Gantt) pour mener un projet en groupe avec un commanditaire réel.</p></div>
+        <div class="step"><span class="lvl">Analyser</span><p><strong>Analyser une situation de formation avec recul</strong> : observer sans juger, repérer ses biais cognitifs et les dilemmes du formateur.</p></div>
+        <div class="step"><span class="lvl">Évaluer</span><p><strong>Évaluer des présentations et des productions entre pairs</strong>, et formuler des retours constructifs et exploitables.</p></div>
+        <div class="step"><span class="lvl">Créer</span><p><strong>Créer et pitcher un livrable éducatif pertinent</strong> (short talk 3 min) qui répond à une vraie demande de commanditaire.</p></div>
       </div>
     </div>
   </section>
@@ -329,7 +336,7 @@
   <section class="view" id="v-ressources" data-screen-label="Ressources">
     <div class="sec-head">
       <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">03 · Ressources &amp; outils</span>
+      <span class="crumb">02 · Ressources &amp; outils</span>
       <span class="sec-title">Apprendre en expérimentant</span>
     </div>
     <div class="sec-body">
@@ -343,6 +350,11 @@
             <span class="toolchip">Padlet</span>
             <span class="toolchip">Wooclap</span>
             <span class="toolchip">Genially</span>
+            <span class="toolchip">Modulo</span>
+            <span class="toolchip">Miro</span>
+            <span class="toolchip">Swivl</span>
+            <span class="toolchip">Visme</span>
+            <span class="toolchip">Beekee</span>
             <span class="toolchip rose">IA générative</span>
           </div>
           <p style="margin:14px 0 0;font-size:13.5px;color:var(--muted);">Présentés au fil des séances, à réinvestir dans vos projets.</p>
@@ -360,31 +372,165 @@
   <section class="view" id="v-plan" data-screen-label="Plan">
     <div class="sec-head">
       <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">04 · Plan du semestre</span>
+      <span class="crumb">03 · Plan du semestre</span>
       <span class="sec-title">13 séances · 23 février → 25 mai 2027</span>
     </div>
     <div class="sec-body">
       <table class="plan">
         <thead>
-          <tr><th>Séance</th><th>Date</th><th>Thème</th><th>Description</th><th>Travail à effectuer</th></tr>
+          <tr><th>Séance</th><th>Date</th><th>Titre</th><th>Activité</th><th>Deadline</th></tr>
         </thead>
         <tbody>
-          <tr><td class="num">S01</td><td class="date">23 fév.</td><td class="theme">Cadre &amp; Objectifs</td><td class="desc">Présentations croisées, découverte des projets, syllabus</td><td class="dl">—</td></tr>
-          <tr><td class="num">S02</td><td class="date">2 mars</td><td class="theme">Marketplace · Groupes · Mémoire des prénoms</td><td class="desc">Constitution des groupes, choix des commanditaires, Chambre Romaine</td><td class="dl"><span class="dl-pill">Fiche mémo Padlet → avant S03</span></td></tr>
-          <tr><td class="num">S03</td><td class="date">9 mars</td><td class="theme">Mémoire</td><td class="desc">Cerveau visuel, méthode des loci, tournage fond vert</td><td class="dl">—</td></tr>
-          <tr><td class="num">S04</td><td class="date">16 mars</td><td class="theme">Neuromythes</td><td class="desc">Déconstruire les faux savoirs sur le cerveau</td><td class="dl">—</td></tr>
-          <tr><td class="num">S05</td><td class="date">23 mars</td><td class="theme">Agilité mentale · Stay Cool</td><td class="desc">Surcharge cognitive, multitâche &amp; débriefing Wooclap</td><td class="dl">—</td></tr>
+          <tr data-seance="S01"><td class="num">S01</td><td class="date">23 fév.</td><td class="theme">Cadre &amp; objectifs</td><td class="desc">Brise-glace · cartes métiers</td><td class="dl"><b>2 mars</b> · Constitution des groupes</td></tr>
+          <tr data-seance="S02"><td class="num">S02</td><td class="date">2 mars</td><td class="theme">Projets &amp; groupes</td><td class="desc">Marketplace · mémorisation prénoms</td><td class="dl"><b>7 mars</b> · Slide prénom finalisée</td></tr>
+          <tr data-seance="S03"><td class="num">S03</td><td class="date">9 mars</td><td class="theme">Mémoire &amp; collaboration</td><td class="desc">Fond vert · one-minute paper</td><td class="dl"><b>16 mars</b> · Analyse de l'existant (individuelle)</td></tr>
+          <tr data-seance="S04"><td class="num">S04</td><td class="date">16 mars</td><td class="theme">Avant-projet &amp; IA</td><td class="desc">Démos IA · travail de groupe</td><td class="dl"><b>23 mars</b> · Analyse de l'existant (collective)</td></tr>
+          <tr data-seance="S05"><td class="num">S05</td><td class="date">23 mars</td><td class="theme">Prise de parole &amp; agilité</td><td class="desc">Stay Cool · Wooclap</td><td class="dl"><b>6 avr.</b> · Analyse de l'existant en 180° (1 slide)</td></tr>
           <tr class="break"><td colspan="5">30 mars — pas de cours · vacances de Pâques</td></tr>
-          <tr><td class="num">S06</td><td class="date">6 avr.</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S07</td><td class="date">13 avr.</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S08</td><td class="date">20 avr.</td><td class="theme">Évaluation intermédiaire <span class="badge-tbc">à confirmer</span></td><td class="desc">Présentations d'avant-projet</td><td class="dl">—</td></tr>
-          <tr><td class="num">S09</td><td class="date">27 avr.</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S10</td><td class="date">4 mai</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S11</td><td class="date">11 mai</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S12</td><td class="date">18 mai</td><td class="theme">À confirmer <span class="badge-tbc">2027</span></td><td class="desc">—</td><td class="dl">—</td></tr>
-          <tr><td class="num">S13</td><td class="date">25 mai</td><td class="theme">Évaluation finale <span class="badge-tbc">à confirmer</span></td><td class="desc">Présentations finales des projets</td><td class="dl">—</td></tr>
+          <tr data-seance="S06"><td class="num">S06</td><td class="date">6 avr.</td><td class="theme">Communication &amp; feedback</td><td class="desc">Présentations 180" · éval. entre pairs</td><td class="dl"><b>13 avr.</b> · Dossier de faisabilité (+ 1 slide)</td></tr>
+          <tr data-seance="S07"><td class="num">S07</td><td class="date">13 avr.</td><td class="theme">Gestion de projet &amp; planification</td><td class="desc">Faisabilité 180" · Kanban Miro</td><td class="dl"><b>20 avr.</b> · Présentation intermédiaire (évaluée)</td></tr>
+          <tr data-seance="S08" class="eval-row"><td class="num">S08</td><td class="date">20 avr.</td><td class="theme">Présentations intermédiaires</td><td class="desc">Short talk évalué · feedback</td><td class="dl"><b>27 avr.</b> · Objectif &amp; livrable</td></tr>
+          <tr data-seance="S09"><td class="num">S09</td><td class="date">27 avr.</td><td class="theme">Neuro-mythes</td><td class="desc">Poster session · argumentation</td><td class="dl" rowspan="5" style="vertical-align:middle"><b>25 mai</b> · Livrable final + plan d'action</td></tr>
+          <tr data-seance="S10"><td class="num">S10</td><td class="date">4 mai</td><td class="theme">Observation &amp; jugement</td><td class="desc">Exercices d'observation</td></tr>
+          <tr data-seance="S11"><td class="num">S11</td><td class="date">11 mai</td><td class="theme">Efficacité &amp; biais cognitifs</td><td class="desc">Marche dialoguée · jeu de cartes</td></tr>
+          <tr data-seance="S12"><td class="num">S12</td><td class="date">18 mai</td><td class="theme">Controverses &amp; apprentissage</td><td class="desc">Émoquiz Wooclap</td></tr>
+          <tr data-seance="S13" class="eval-row"><td class="num">S13</td><td class="date">25 mai</td><td class="theme">Présentation du livrable</td><td class="desc">Présentation finale évaluée</td></tr>
         </tbody>
       </table>
+      <h3 class="plan-detail-h">Détail des séances — cliquez une ligne ci-dessus pour y accéder</h3>
+      <div class="splan">
+        <article class="scard" id="sc-S01">
+          <div class="sc-top"><span class="sc-num">S01</span><span class="sc-date">23 fév.</span><h3 class="sc-title">Cadre &amp; objectifs</h3></div>
+          <p class="sc-pb">« D'où venez-vous et où voulez-vous aller ? C'est quoi la professionnalisation ? »</p>
+          <p class="sc-desc">Première séance : à partir d'un brise-glace en binôme, on apprend à se connaître, on découvre le cadre du cours (objectifs, évaluation, projets commanditaires) et on amorce la grande question du semestre.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Beekee</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Brise-glace (binôme) · classement cartes métiers</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">2 mars · Constitution des groupes (Padlet)</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S02</span><span class="sc-date">2 mars</span><h3 class="sc-title">Projets &amp; groupes</h3></div>
+          <p class="sc-pb">« Avec qui allez-vous travailler — et comment vous en souviendrez-vous ? »</p>
+          <p class="sc-desc">Constitution des groupes via la marketplace des projets, puis une technique de mémorisation des prénoms (Chambre Romaine) partagée en ligne. Dernier délai d'inscription Moodle.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Padlet · Modulo</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Marketplace des projets · mémorisation des prénoms</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">7 mars · Slide prénom finalisée (Padlet)</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S03</span><span class="sc-date">9 mars</span><h3 class="sc-title">Mémoire &amp; collaboration</h3></div>
+          <p class="sc-pb">« Comment fonctionne vraiment notre mémoire ? »</p>
+          <p class="sc-desc">Séance au labo fond vert (MS 050) : cerveau visuel, Chambre Romaine et mise en situation par l'enregistrement vidéo.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Teams</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Enregistrement fond vert · one-minute paper</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">16 mars · Analyse de l'existant (individuelle)</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S04</span><span class="sc-date">16 mars</span><h3 class="sc-title">Avant-projet &amp; IA</h3></div>
+          <p class="sc-pb">« C'est quoi un "avant-projet" ? Comment aller plus vite avec l'IA ? »</p>
+          <p class="sc-desc">Démos d'outils IA (Claude, ChatGPT, NotebookLM, Perplexity) et premier temps de travail en groupe sur l'avant-projet.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Claude · ChatGPT · NotebookLM · Perplexity</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Démos IA · travail de groupe</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">23 mars · Analyse de l'existant (collective)</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S05</span><span class="sc-date">23 mars</span><h3 class="sc-title">Prise de parole &amp; agilité</h3></div>
+          <p class="sc-pb">« Comment garder la tête froide ? Êtes-vous prêt à vous adapter ? »</p>
+          <p class="sc-desc">Le jeu Stay Cool fait vivre la surcharge cognitive, puis on en tire des stratégies d'agilité mentale utiles en formation et pour la prise de parole.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Wooclap</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Jeu Stay Cool · débrief Wooclap</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">6 avril · Analyse de l'existant en 180° (1 slide)</span></div>
+          </div>
+        </article>
+        <div class="break">30 mars — pas de cours · vacances de Pâques</div>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S06</span><span class="sc-date">6 avr.</span><h3 class="sc-title">Communication &amp; feedback</h3></div>
+          <p class="sc-pb">« C'est quoi une bonne présentation ? »</p>
+          <p class="sc-desc">Présentations de l'analyse de l'existant en 180 secondes, évaluation entre pairs et repères pour bien communiquer.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Miro · Swivl · Visme</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Présentations 180" · évaluation entre pairs</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">13 avril · Dossier de faisabilité (+ 1 slide)</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S07</span><span class="sc-date">13 avr.</span><h3 class="sc-title">Gestion de projet &amp; planification</h3></div>
+          <p class="sc-pb">« Quelles bonnes pratiques ? Comment réussir son projet ? »</p>
+          <p class="sc-desc">Présentation de la faisabilité en 180', apports sur la conduite de projet et mise en place d'un Kanban (Miro) pour piloter les tâches jusqu'au livrable.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Miro (Kanban)</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Présentation faisabilité 180" · mise en place Kanban</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">20 avril · Présentation intermédiaire (évaluée)</span></div>
+          </div>
+        </article>
+        <article class="scard eval">
+          <div class="sc-top"><span class="sc-num">S08</span><span class="sc-date">20 avr.</span><h3 class="sc-title">Présentations intermédiaires</h3></div>
+          <p class="sc-pb">« Où en êtes-vous — vraiment ? »</p>
+          <p class="sc-desc">Présentation intermédiaire évaluée de l'avant-projet (5 min) suivie d'un feedback approfondi, devant les commanditaires.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Swivl · Zoom</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Short talk évalué 5 min · feedback</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">27 avril · Objectif &amp; livrable</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S09</span><span class="sc-date">27 avr.</span><h3 class="sc-title">Neuro-mythes</h3></div>
+          <p class="sc-pb">« Quelles fausses croyances sont ancrées chez les pros de l'éducation ? »</p>
+          <p class="sc-desc">Poster session : on se positionne, on argumente et on déconstruit les fausses croyances sur le cerveau et l'apprentissage.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Visme</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Poster session · argumentation</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">25 mai · Plan d'action + livrable final</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S10</span><span class="sc-date">4 mai</span><h3 class="sc-title">Observation &amp; jugement</h3></div>
+          <p class="sc-pb">« Observer sans juger ? Comment faire des retours constructifs ? »</p>
+          <p class="sc-desc">Des exercices (Dessin Main, 1-2-Tous) pour prendre conscience de nos filtres et des niveaux d'observation.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Beekee · Modulo</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Exercices d'observation (Dessin Main · 1-2-Tous)</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">25 mai · Plan d'action + livrable final</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S11</span><span class="sc-date">11 mai</span><h3 class="sc-title">Efficacité &amp; biais cognitifs</h3></div>
+          <p class="sc-pb">« Quels sont les dilemmes du formateur ? Comment éviter les biais cognitifs ? »</p>
+          <p class="sc-desc">Marche dialoguée et jeu de cartes pour analyser des situations concrètes et repérer les biais à l'œuvre.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Genially</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Marche dialoguée · jeu de cartes</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">25 mai · Plan d'action + livrable final</span></div>
+          </div>
+        </article>
+        <article class="scard">
+          <div class="sc-top"><span class="sc-num">S12</span><span class="sc-date">18 mai</span><h3 class="sc-title">Controverses &amp; apprentissage</h3></div>
+          <p class="sc-pb">« Comment gérer son état d'esprit ? Quel impact dans l'apprentissage ? »</p>
+          <p class="sc-desc">Émoquiz Wooclap pour explorer les controverses et croyances en formation, et relier état d'esprit et apprentissage.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Wooclap</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Émoquiz Wooclap</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">25 mai · Plan d'action + livrable final</span></div>
+          </div>
+        </article>
+        <article class="scard eval">
+          <div class="sc-top"><span class="sc-num">S13</span><span class="sc-date">25 mai</span><h3 class="sc-title">Présentation du livrable</h3></div>
+          <p class="sc-pb">« Qu'avez-vous construit — et pour qui ? »</p>
+          <p class="sc-desc">Présentation finale évaluée des livrables (10 min) devant les commanditaires, suivie d'un goûter. Séance allongée jusqu'à 16h10.</p>
+          <div class="sc-meta">
+            <div class="sc-row"><span class="sc-k">Outils</span><span class="sc-v">Swivl</span></div>
+            <div class="sc-row"><span class="sc-k">Activité</span><span class="sc-v">Présentation finale évaluée 10 min · goûter</span></div>
+            <div class="sc-row"><span class="sc-k">Deadline</span><span class="sc-v dl">25 mai · Plan d'action + livrable final (ce jour)</span></div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -392,7 +538,7 @@
   <section class="view" id="v-projets" data-screen-label="Projets">
     <div class="sec-head">
       <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">05 · Projets &amp; groupes</span>
+      <span class="crumb">04 · Projets &amp; groupes</span>
       <span class="sec-title">Des projets authentiques, des commanditaires réels</span>
     </div>
     <div class="sec-body">
@@ -413,37 +559,35 @@
   <section class="view" id="v-evaluation" data-screen-label="Évaluation">
     <div class="sec-head">
       <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">06 · Évaluation</span>
-      <span class="sec-title">Contrôle continu — 8 livrables, 6 points</span>
+      <span class="crumb">05 · Évaluation</span>
+      <span class="sec-title">Contrôle continu — individuel + groupe, 6 points</span>
     </div>
     <div class="sec-body">
       <div class="eval-grid">
         <div class="eval-card teal">
-          <h3>Évaluation intermédiaire</h3>
-          <p class="when">S08 · 20 avril 2027 <span class="badge-tbc">à confirmer</span> — 4 livrables d'avant-projet · 2,25 pts</p>
+          <h3>Individuelle</h3>
+          <p class="when">Au fil des séances · 1,5 pt</p>
           <ol>
-            <li><span class="lbl"><b>Descriptif projet</b></span> <span class="pts">0,25 pt</span></li>
-            <li><span class="lbl"><b>Analyse de l'existant</b></span> <span class="pts">0,75 pt</span></li>
-            <li><span class="lbl"><b>Dossier de faisabilité</b></span> <span class="pts">0,75 pt</span></li>
-            <li><span class="lbl"><b>Présentation</b> (support + oral)</span> <span class="pts">0,5 pt</span></li>
+            <li><span class="lbl"><b>Présence</b></span> <span class="pts">0,5 pt</span></li>
+            <li><span class="lbl"><b>Participation &amp; partage</b></span> <span class="pts">0,5 pt</span></li>
+            <li><span class="lbl"><b>Implication dans le groupe</b></span> <span class="pts">0,5 pt</span></li>
           </ol>
         </div>
         <div class="eval-card rose">
-          <h3>Évaluation finale</h3>
-          <p class="when">S13 · 25 mai 2027 <span class="badge-tbc">à confirmer</span> — 4 livrables du projet · 3,75 pts</p>
-          <ol start="5">
-            <li><span class="lbl"><b>Objectif &amp; livrable</b></span> <span class="pts">0,5 pt</span></li>
-            <li><span class="lbl"><b>Plan d'action</b></span> <span class="pts">0,5 pt</span></li>
-            <li><span class="lbl"><b>Livrable</b></span> <span class="pts">2,25 pts</span></li>
-            <li><span class="lbl"><b>Présentation</b> (support + oral)</span> <span class="pts">0,5 pt</span></li>
+          <h3>Groupe</h3>
+          <p class="when">Rendus &amp; travail final · 4,5 pts</p>
+          <ol>
+            <li><span class="lbl"><b>Présentations orales</b> (prises de parole au fil des séances)</span> <span class="pts">1 pt</span></li>
+            <li><span class="lbl"><b>4 rendus intermédiaires</b> (analyse de l'existant · faisabilité · objectif &amp; livrable · plan d'action)</span> <span class="pts">1,5 pt</span></li>
+            <li><span class="lbl"><b>Livrable final</b></span> <span class="pts">2 pts</span></li>
           </ol>
         </div>
       </div>
       <div class="eval-note teal">
-        <p><b>Retours formatifs.</b> Chaque envoi par e-mail d'un livrable finalisé à votre commanditaire (en me mettant systématiquement en copie) enclenche une évaluation formative : vous recevez des retours personnalisés sur les points à améliorer. Envoyez uniquement des travaux finalisés — soignez la forme, soyez professionnels&nbsp;!</p>
+        <p><b>Note finale sur 6.</b> Elle additionne l'évaluation individuelle (1,5 pt) et l'évaluation de groupe (4,5 pts). Pas d'examen — uniquement du contrôle continu.</p>
       </div>
       <div class="eval-note">
-        <p><b>Note &amp; rattrapage.</b> Vous pouvez améliorer n'importe quel livrable passé la date butoir (sauf les présentations) — pris en compte à l'évaluation finale, avec une petite pénalité. La note finale additionne les deux évaluations. Si elle est inférieure à 4, tout le groupe passe en rattrapage, avec délai d'amélioration jusqu'au <b>21 août 2027</b>. Attention&nbsp;: <b>plus de deux absences</b> (même justifiées) invalident la note.</p>
+        <p><b>Retours formatifs.</b> Chaque envoi par e-mail d'un rendu finalisé à votre commanditaire (en me mettant systématiquement en copie) enclenche une évaluation formative : vous recevez des retours personnalisés sur les points à améliorer. Envoyez uniquement des travaux finalisés — soignez la forme, soyez professionnels&nbsp;!</p>
       </div>
     </div>
   </section>
@@ -452,24 +596,21 @@
   <section class="view" id="v-dates" data-screen-label="Dates importantes">
     <div class="sec-head">
       <button class="backbtn" type="button" data-go="hub">← Accueil</button>
-      <span class="crumb">07 · Dates importantes</span>
+      <span class="crumb">06 · Dates importantes</span>
       <span class="sec-title">Les échéances du semestre</span>
     </div>
     <div class="sec-body">
-      <p class="lead" style="margin-bottom:18px;">Les dates des livrables seront confirmées en début de semestre. <span class="badge-tbc">échéancier 2027 à confirmer</span></p>
+      <p class="lead" style="margin-bottom:18px;">Échéancier des livrables — semestre de printemps 2027. Tous les rendus se font dans les outils indiqués (Padlet, Moodle), commanditaire en copie.</p>
       <ul class="tl">
-        <li><span class="tl-date">2 mars · S02</span><br /><span class="tl-what">Constitution des groupes</span></li>
-        <li><span class="tl-date">avant le 9 mars · S03</span><br /><span class="tl-what">Fiche mémo des prénoms sur Padlet</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Descriptif projet</span> <span class="tl-meta">· 0,25 pt</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Analyse de l'existant</span> <span class="tl-meta">· 0,75 pt</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Dossier de faisabilité</span> <span class="tl-meta">· 0,75 pt</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Support de présentation (avant-projet)</span> <span class="tl-meta">· 0,5 pt</span></li>
-        <li><span class="tl-date">20 avril · S08 — à confirmer</span><br /><span class="tl-what">Évaluation intermédiaire</span> <span class="tl-meta">· 2,25 pts</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Objectif &amp; livrable</span> <span class="tl-meta">· 0,5 pt</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Plan d'action</span> <span class="tl-meta">· 0,5 pt</span></li>
-        <li class="rose"><span class="tl-date">à confirmer</span><br /><span class="tl-what">Livrable final &amp; support de présentation</span> <span class="tl-meta">· 2,25 + 0,5 pts</span></li>
-        <li><span class="tl-date">25 mai · S13 — à confirmer</span><br /><span class="tl-what">Évaluation finale</span> <span class="tl-meta">· note = éval. intermédiaire + finale</span></li>
-        <li class="rose"><span class="tl-date">21 août 2027</span><br /><span class="tl-what">Fin du délai de rattrapage</span> <span class="tl-meta">· si note finale &lt; 4</span></li>
+        <li><span class="tl-date">2 mars · S02</span><br /><span class="tl-what">Constitution des groupes</span> <span class="tl-meta">· Padlet</span></li>
+        <li><span class="tl-date">7 mars</span><br /><span class="tl-what">Slide prénom finalisée</span> <span class="tl-meta">· Padlet</span></li>
+        <li class="rose"><span class="tl-date">16 mars · S04</span><br /><span class="tl-what">Analyse de l'existant — individuelle</span> <span class="tl-meta">· rendu intermédiaire</span></li>
+        <li class="rose"><span class="tl-date">23 mars · S05</span><br /><span class="tl-what">Analyse de l'existant — collective</span></li>
+        <li class="rose"><span class="tl-date">6 avril · S06</span><br /><span class="tl-what">Analyse de l'existant en 180° — 1 slide</span></li>
+        <li class="rose"><span class="tl-date">13 avril · S07</span><br /><span class="tl-what">Dossier de faisabilité + 1 slide</span> <span class="tl-meta">· rendu intermédiaire</span></li>
+        <li><span class="tl-date">20 avril · S08</span><br /><span class="tl-what">Présentation intermédiaire</span> <span class="tl-meta">· évaluée · devant commanditaires</span></li>
+        <li class="rose"><span class="tl-date">27 avril · S09</span><br /><span class="tl-what">Objectif &amp; livrable</span> <span class="tl-meta">· rendu intermédiaire</span></li>
+        <li><span class="tl-date">25 mai · S13</span><br /><span class="tl-what">Plan d'action + livrable final + présentation</span> <span class="tl-meta">· évaluation finale · devant commanditaires</span></li>
       </ul>
     </div>
   </section>
@@ -485,14 +626,21 @@
   window.addEventListener('resize', fit); fit();
 
   // --- Navigation par vues (hash persistant) ---
+  var SVG = {
+    objectifs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>',
+    ressources:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l3 3"/><path d="M5 19l4-1 9-9-3-3-9 9z"/></svg>',
+    plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>',
+    projets:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 010 6"/><path d="M18 15c2 .5 3 2 3 5"/></svg>',
+    evaluation:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>',
+    dates:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
+  };
   var SECTIONS = [
     {id:'objectifs',    n:'1', nm:'Objectifs'},
-    {id:'informations', n:'2', nm:'Informations'},
-    {id:'ressources',   n:'3', nm:'Ressources'},
-    {id:'plan',         n:'4', nm:'Plan'},
-    {id:'projets',      n:'5', nm:'Projets'},
-    {id:'evaluation',   n:'6', nm:'Évaluation'},
-    {id:'dates',        n:'7', nm:'Dates'}
+    {id:'ressources',   n:'2', nm:'Ressources'},
+    {id:'plan',         n:'3', nm:'Plan'},
+    {id:'projets',      n:'4', nm:'Projets'},
+    {id:'evaluation',   n:'5', nm:'Évaluation'},
+    {id:'dates',        n:'6', nm:'Dates'}
   ];
   var ORDER = ['hub'].concat(SECTIONS.map(function(s){ return s.id; }));
 
@@ -508,7 +656,7 @@
       b.setAttribute('data-go', s.id);
       b.setAttribute('title', s.nm);
       b.setAttribute('aria-label', s.nm);
-      b.innerHTML = '<span class="no">'+s.n+'</span><span class="nm">'+s.nm+'</span>';
+      b.innerHTML = '<span class="ic">'+SVG[s.id]+'</span><span class="nm">'+s.nm+'</span>';
       nav.appendChild(b);
     });
     crumb.replaceWith(nav);
@@ -546,6 +694,21 @@
   document.addEventListener('click', function(e){
     var btn = e.target.closest('[data-go]');
     if (btn){ go(btn.getAttribute('data-go')); }
+  });
+  // Tableau récap du Plan → défilement vers la tuile détaillée de la séance
+  document.addEventListener('click', function(e){
+    var row = e.target.closest('tr[data-seance]');
+    if (!row) return;
+    var code = row.getAttribute('data-seance');
+    var cards = document.querySelectorAll('#v-plan .scard');
+    for (var i=0;i<cards.length;i++){
+      var num = cards[i].querySelector('.sc-num');
+      if (num && num.textContent.trim() === code){
+        cards[i].scrollIntoView({behavior:'smooth', block:'start'});
+        cards[i].classList.remove('flash'); void cards[i].offsetWidth; cards[i].classList.add('flash');
+        break;
+      }
+    }
   });
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape'){ go('hub'); return; }

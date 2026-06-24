@@ -161,7 +161,7 @@
 
   /* ---- Ressources ---- */
   #v-ressources .sec-body{display:flex;flex-direction:column}
-  .res-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .res-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:18px}
   .toolchips{display:flex;flex-wrap:wrap;gap:10px}
   .toolchip{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border-subtle);font-size:14.5px;font-weight:600;color:var(--ink)}
   .toolchip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal)}
@@ -228,7 +228,7 @@
   .eval-bar .seg .pt{font-size:18px;font-variant-numeric:tabular-nums}
   .eval-bar .seg.teal{background:var(--teal-deep)}
   .eval-bar .seg.rose{background:var(--rose-deep)}
-  .eval-grid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
+  .eval-grid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:18px;margin-bottom:18px}
   .eval-card{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow)}
   .eval-card ol{flex:1;justify-content:center}
   .eval-card.teal{border-top:4px solid var(--teal)}
@@ -256,7 +256,8 @@
   .datesgrid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:16px}
   .dcard{display:flex;flex-direction:column;gap:9px;background:var(--surface-card);border:1px solid var(--border-subtle);border-left:4px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 24px}
   .dcard.rose{border-left-color:var(--rose)}
-  .dcard.eval{background:var(--bg-rose);border-left-color:var(--rose-deep)}
+  .dcard.eval{background:var(--bg-rose);border-color:rgba(207,0,99,.3);border-left:5px solid var(--rose-deep);box-shadow:0 0 0 2px rgba(207,0,99,.16),var(--shadow)}
+  .dcard.eval .d-date::after{content:"★ évaluée";float:right;font-size:11px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--rose-deep);padding:2px 9px;border-radius:999px;text-transform:none}
   .dcard .d-date{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
   .dcard.rose .d-date,.dcard.eval .d-date{color:var(--rose-deep)}
   .dcard .d-what{font-size:17px;font-weight:700;color:var(--ink);line-height:1.32}
@@ -387,8 +388,13 @@
         </div>
         <div class="info-card">
           <h3>Matériel en prêt</h3>
-          <p style="margin:0 0 10px;font-size:15.5px;color:#3C4658;">De quoi avez-vous besoin&nbsp;? Du matériel audiovisuel (studio fond vert, captation, Swivl…) peut être mis à disposition pour vos livrables.</p>
-          <p style="margin:0;font-size:13.5px;color:var(--muted);">Liste détaillée à venir <span class="badge-tbc">à compléter</span> — contactez-moi selon les besoins de votre projet.</p>
+          <p style="margin:0 0 12px;font-size:15.5px;color:#3C4658;">Du matériel audiovisuel peut être mis à disposition pour vos livrables&nbsp;:</p>
+          <ul>
+            <li>Studio <strong>fond vert</strong> &amp; incrustation</li>
+            <li>Robot de captation <strong>Swivl</strong></li>
+            <li>Captation <strong>vidéo &amp; son</strong></li>
+          </ul>
+          <p style="margin:14px 0 0;font-size:13.5px;color:var(--muted);">Liste complète <span class="badge-tbc">à compléter</span> — contactez-moi selon votre projet.</p>
         </div>
         <div class="info-card">
           <h3>Notre approche</h3>

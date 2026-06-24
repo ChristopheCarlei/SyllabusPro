@@ -31,7 +31,7 @@
   .hub-head .logos img.fpse{height:78px;width:auto}
   .hub-head .logos img.afordens{height:60px;width:auto;margin-top:9px}
   .hub-eyebrow{font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 10px}
-  .hub-title{font-size:46px;font-weight:800;letter-spacing:-.025em;line-height:1.04;margin:0 0 12px;color:var(--ink);white-space:nowrap}
+  .hub-title{font-size:46px;font-weight:800;letter-spacing:-.025em;line-height:1.04;margin:0 0 12px;color:var(--ink);text-wrap:balance}
   .hub-sub{font-size:19px;color:var(--muted);margin:0}
   .hub-sub strong{color:var(--ink);font-weight:600}
 
@@ -129,12 +129,21 @@
   }
 
   /* ---- Objectifs ---- */
-  .bloom{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .bloom .step{background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
-  .bloom .step .lvl{display:inline-block;margin-bottom:10px;padding:4px 14px;border-radius:999px;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--bg-teal);color:var(--teal-deep)}
-  .bloom .step:nth-child(n+4) .lvl{background:var(--bg-rose);color:var(--rose-deep)}
-  .bloom .step p{margin:0;font-size:14.5px;line-height:1.5;color:#3C4658}
-  .bloom .step p strong{color:var(--ink)}
+  .bloom{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:18px;height:100%}
+  .bloom .step{display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-teal);border:1px solid #9FE1CB;border-radius:var(--radius);padding:24px 26px}
+  .bloom .step:nth-child(n+4){background:var(--bg-rose);border-color:rgba(207,0,99,.25)}
+  .bloom .step:last-child{background:var(--rose);border-color:var(--rose-deep)}
+  .bloom .step .lvl{font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep)}
+  .bloom .step:nth-child(n+4) .lvl{color:var(--rose-deep)}
+  .bloom .step:last-child .lvl{color:var(--bg-rose)}
+  .bloom .step p{margin:12px 0 0;font-size:16.5px;line-height:1.5;color:var(--teal-ink)}
+  .bloom .step:nth-child(n+4) p{color:#4B1528}
+  .bloom .step:last-child p{color:#fff}
+  .bloom .step p strong{font-weight:800}
+  .bloom .seances{display:flex;gap:8px;margin-top:16px}
+  .bloom .seances span{font-size:12.5px;font-weight:800;padding:3px 11px;border-radius:999px;background:#fff;color:var(--teal-deep);border:1px solid #9FE1CB}
+  .bloom .step:nth-child(n+4) .seances span{color:var(--rose-deep);border-color:rgba(207,0,99,.3)}
+  .bloom .step:last-child .seances span{background:rgba(255,255,255,.2);color:#fff;border:none}
 
   /* ---- Informations ---- */
   .info-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
@@ -151,7 +160,8 @@
   .meta-list .v a{color:var(--teal-deep);border-bottom:1.5px solid rgba(0,133,127,.35)}
 
   /* ---- Ressources ---- */
-  .res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  #v-ressources .sec-body{display:flex;flex-direction:column}
+  .res-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
   .toolchips{display:flex;flex-wrap:wrap;gap:10px}
   .toolchip{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border-subtle);font-size:14.5px;font-weight:600;color:var(--ink)}
   .toolchip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal)}
@@ -200,15 +210,27 @@
   @keyframes scard-flash-r{0%,100%{box-shadow:var(--shadow)}25%,60%{box-shadow:0 0 0 3px var(--rose),var(--shadow)}}
 
   /* ---- Projets ---- */
-  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .proj{display:flex;align-items:center;gap:18px;padding:18px 22px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);box-shadow:var(--shadow)}
+  #v-projets .sec-body{display:flex;flex-direction:column}
+  .proj-grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px}
+  .proj{display:flex;flex-direction:column;gap:12px;padding:20px 22px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);box-shadow:var(--shadow)}
   .proj .p-num{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--bg-teal);color:var(--teal-deep);font-size:16px;font-weight:800}
-  .proj h4{margin:0 0 2px;font-size:16.5px;font-weight:700;color:var(--ink)}
-  .proj p{margin:0;font-size:13.5px;color:var(--muted)}
+  .proj h4{margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3}
+  .proj .p-com{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border-subtle);font-size:13px;font-weight:600;color:var(--muted)}
+  .proj .p-com::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .proj-cta{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:20px 22px;background:var(--bg-teal);border:1px dashed rgba(0,133,127,.4);border-radius:var(--radius)}
+  .proj-cta .c-t{font-size:15px;font-weight:800;color:var(--teal-deep)}
+  .proj-cta .c-d{font-size:13px;line-height:1.45;color:var(--teal-ink)}
 
   /* ---- Évaluation ---- */
-  .eval-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
-  .eval-card{background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow)}
+  #v-evaluation .sec-body{display:flex;flex-direction:column}
+  .eval-bar{display:flex;gap:5px;height:52px;margin-bottom:18px}
+  .eval-bar .seg{display:flex;align-items:center;justify-content:center;gap:9px;border-radius:var(--radius-sm);font-size:14.5px;font-weight:800;color:#fff;white-space:nowrap}
+  .eval-bar .seg .pt{font-size:18px;font-variant-numeric:tabular-nums}
+  .eval-bar .seg.teal{background:var(--teal-deep)}
+  .eval-bar .seg.rose{background:var(--rose-deep)}
+  .eval-grid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
+  .eval-card{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow)}
+  .eval-card ol{flex:1;justify-content:center}
   .eval-card.teal{border-top:4px solid var(--teal)}
   .eval-card.rose{border-top:4px solid var(--rose)}
   .eval-card h3{font-size:19px;font-weight:800;margin:0 0 4px;color:var(--ink)}
@@ -230,15 +252,19 @@
   .eval-note.teal p b{color:var(--teal-deep)}
 
   /* ---- Dates importantes ---- */
-  .tl{position:relative;margin:10px 0 0;padding:0 0 0 26px;list-style:none}
-  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line-strong)}
-  .tl li{position:relative;padding:0 0 22px}
-  .tl li::before{content:"";position:absolute;left:-26px;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--teal)}
-  .tl li.rose::before{border-color:var(--rose)}
-  .tl .tl-date{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
-  .tl li.rose .tl-date{color:var(--rose-deep)}
-  .tl .tl-what{font-size:16px;font-weight:700;color:var(--ink)}
-  .tl .tl-meta{font-size:13.5px;color:var(--muted)}
+  #v-dates .sec-body{display:flex;flex-direction:column}
+  .datesgrid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:16px}
+  .dcard{display:flex;flex-direction:column;gap:9px;background:var(--surface-card);border:1px solid var(--border-subtle);border-left:4px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 24px}
+  .dcard.rose{border-left-color:var(--rose)}
+  .dcard.eval{background:var(--bg-rose);border-left-color:var(--rose-deep)}
+  .dcard .d-date{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+  .dcard.rose .d-date,.dcard.eval .d-date{color:var(--rose-deep)}
+  .dcard .d-what{font-size:17px;font-weight:700;color:var(--ink);line-height:1.32}
+  .dcard .d-meta{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--muted);margin-top:auto;padding-top:6px}
+  .dcard .d-meta.eval{color:var(--rose-deep)}
+  .dcard .d-meta::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal);flex:none}
+  .dcard.rose .d-meta::before{background:var(--rose)}
+  .dcard .d-meta.eval::before{background:var(--rose-deep)}
 </style>
 </head>
 <body>
@@ -322,12 +348,12 @@
     </div>
     <div class="sec-body">
       <div class="bloom">
-        <div class="step"><span class="lvl">Rappeler</span><p><strong>Rappeler comment fonctionnent la mémoire et l'apprentissage</strong>, et distinguer les neuro-mythes des connaissances établies sur le cerveau.</p></div>
-        <div class="step"><span class="lvl">Comprendre</span><p><strong>Comprendre les étapes d'un projet d'intervention</strong> — avant-projet, faisabilité, planification — et comment l'IA et les outils numériques accélèrent le travail.</p></div>
-        <div class="step"><span class="lvl">Appliquer</span><p><strong>Appliquer des méthodes de gestion de projet</strong> (jalons, Gantt) pour mener un projet en groupe avec un commanditaire réel.</p></div>
-        <div class="step"><span class="lvl">Analyser</span><p><strong>Analyser une situation de formation avec recul</strong> : observer sans juger, repérer ses biais cognitifs et les dilemmes du formateur.</p></div>
-        <div class="step"><span class="lvl">Évaluer</span><p><strong>Évaluer des présentations et des productions entre pairs</strong>, et formuler des retours constructifs et exploitables.</p></div>
-        <div class="step"><span class="lvl">Créer</span><p><strong>Créer et pitcher un livrable éducatif pertinent</strong> (short talk 3 min) qui répond à une vraie demande de commanditaire.</p></div>
+        <div class="step"><span class="lvl">01 · Rappeler</span><p>Distinguer les <strong>neuro-mythes</strong> des connaissances établies sur la mémoire, le cerveau et l'apprentissage.</p><div class="seances"><span>S03</span><span>S09</span></div></div>
+        <div class="step"><span class="lvl">02 · Comprendre</span><p>Les étapes d'un <strong>projet d'intervention</strong> — avant-projet, faisabilité — et comment l'IA accélère le travail.</p><div class="seances"><span>S04</span></div></div>
+        <div class="step"><span class="lvl">03 · Appliquer</span><p>Des méthodes de <strong>gestion de projet</strong> (jalons, Gantt) pour mener un projet avec un commanditaire réel.</p><div class="seances"><span>S07</span></div></div>
+        <div class="step"><span class="lvl">04 · Analyser</span><p>Une situation de formation avec recul : <strong>observer sans juger</strong>, repérer ses biais et les dilemmes du formateur.</p><div class="seances"><span>S10</span><span>S11</span></div></div>
+        <div class="step"><span class="lvl">05 · Évaluer</span><p>Des présentations et productions <strong>entre pairs</strong>, et formuler des retours constructifs et exploitables.</p><div class="seances"><span>S06</span><span>S08</span></div></div>
+        <div class="step"><span class="lvl">06 · Créer</span><p>Un <strong>livrable éducatif</strong> pertinent et le pitcher en 3 min pour répondre à une vraie demande de commanditaire.</p><div class="seances"><span>S13</span></div></div>
       </div>
     </div>
   </section>
@@ -361,8 +387,17 @@
         </div>
         <div class="info-card">
           <h3>Matériel en prêt</h3>
-          <p style="margin:0 0 10px;font-size:15.5px;color:#3C4658;">De quoi avez-vous besoin&nbsp;? Du matériel audiovisuel (studio fond vert, captation…) peut être mis à disposition pour vos livrables.</p>
+          <p style="margin:0 0 10px;font-size:15.5px;color:#3C4658;">De quoi avez-vous besoin&nbsp;? Du matériel audiovisuel (studio fond vert, captation, Swivl…) peut être mis à disposition pour vos livrables.</p>
           <p style="margin:0;font-size:13.5px;color:var(--muted);">Liste détaillée à venir <span class="badge-tbc">à compléter</span> — contactez-moi selon les besoins de votre projet.</p>
+        </div>
+        <div class="info-card">
+          <h3>Notre approche</h3>
+          <ul>
+            <li>Une <strong>problématique professionnelle concrète</strong> par séance</li>
+            <li>Une <strong>activité innovante</strong> à chaque rencontre — vous êtes actifs</li>
+            <li>Des <strong>pitchs courts (3 min)</strong> plutôt que de longs rapports</li>
+            <li>Un <strong>fil rouge cumulatif</strong> : flipcharts créés en live, réaffichés de séance en séance</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -544,13 +579,14 @@
     <div class="sec-body">
       <p class="lead">Chaque groupe choisit un projet proposé par un commanditaire externe et produit un <strong>livrable éducatif réel</strong>. <span class="badge-tbc">Liste édition 2026 — à actualiser pour 2027</span></p>
       <div class="proj-grid">
-        <div class="proj"><span class="p-num">1</span><div><h4>Parcours compétences</h4><p>UNIGE</p></div></div>
-        <div class="proj"><span class="p-num">2</span><div><h4>Réalité professionnelle enseignante</h4><p>UCLouvain</p></div></div>
-        <div class="proj"><span class="p-num">3</span><div><h4>Promotion filière collégiens</h4><p>CMQ</p></div></div>
-        <div class="proj"><span class="p-num">4</span><div><h4>Bonnes pratiques de l'IA étudiant·es</h4><p>CMQ</p></div></div>
-        <div class="proj"><span class="p-num">5</span><div><h4>Pédagogie inversée enseignante</h4><p>CMQ</p></div></div>
-        <div class="proj"><span class="p-num">6</span><div><h4>Gamification innovante étudiante</h4><p>CMQ</p></div></div>
-        <div class="proj"><span class="p-num">7</span><div><h4>Recensement ressources</h4><p>CMQ</p></div></div>
+        <div class="proj"><span class="p-num">1</span><h4>Parcours compétences</h4><span class="p-com">UNIGE</span></div>
+        <div class="proj"><span class="p-num">2</span><h4>Réalité professionnelle enseignante</h4><span class="p-com">UCLouvain</span></div>
+        <div class="proj"><span class="p-num">3</span><h4>Promotion filière collégiens</h4><span class="p-com">CMQ</span></div>
+        <div class="proj"><span class="p-num">4</span><h4>Bonnes pratiques de l'IA étudiant·es</h4><span class="p-com">CMQ</span></div>
+        <div class="proj"><span class="p-num">5</span><h4>Pédagogie inversée enseignante</h4><span class="p-com">CMQ</span></div>
+        <div class="proj"><span class="p-num">6</span><h4>Gamification innovante étudiante</h4><span class="p-com">CMQ</span></div>
+        <div class="proj"><span class="p-num">7</span><h4>Recensement ressources</h4><span class="p-com">CMQ</span></div>
+        <a class="proj-cta" href="https://prointer.netlify.app/" target="_blank" rel="noopener"><span class="c-t">Observatoire des projets ↗</span><span class="c-d">8 livrables réels 2024–2026 : podcast, vidéo, jeu sérieux, maquette web…</span></a>
       </div>
     </div>
   </section>
@@ -563,6 +599,10 @@
       <span class="sec-title">Contrôle continu — individuel + groupe, 6 points</span>
     </div>
     <div class="sec-body">
+      <div class="eval-bar" role="img" aria-label="Répartition des 6 points : 1,5 individuel et 4,5 en groupe">
+        <div class="seg teal" style="flex:1.5">Individuelle <span class="pt">1,5</span></div>
+        <div class="seg rose" style="flex:4.5">Groupe <span class="pt">4,5</span></div>
+      </div>
       <div class="eval-grid">
         <div class="eval-card teal">
           <h3>Individuelle</h3>
@@ -601,17 +641,17 @@
     </div>
     <div class="sec-body">
       <p class="lead" style="margin-bottom:18px;">Échéancier des livrables — semestre de printemps 2027. Tous les rendus se font dans les outils indiqués (Padlet, Moodle), commanditaire en copie.</p>
-      <ul class="tl">
-        <li><span class="tl-date">2 mars · S02</span><br /><span class="tl-what">Constitution des groupes</span> <span class="tl-meta">· Padlet</span></li>
-        <li><span class="tl-date">7 mars</span><br /><span class="tl-what">Slide prénom finalisée</span> <span class="tl-meta">· Padlet</span></li>
-        <li class="rose"><span class="tl-date">16 mars · S04</span><br /><span class="tl-what">Analyse de l'existant — individuelle</span> <span class="tl-meta">· rendu intermédiaire</span></li>
-        <li class="rose"><span class="tl-date">23 mars · S05</span><br /><span class="tl-what">Analyse de l'existant — collective</span></li>
-        <li class="rose"><span class="tl-date">6 avril · S06</span><br /><span class="tl-what">Analyse de l'existant en 180° — 1 slide</span></li>
-        <li class="rose"><span class="tl-date">13 avril · S07</span><br /><span class="tl-what">Dossier de faisabilité + 1 slide</span> <span class="tl-meta">· rendu intermédiaire</span></li>
-        <li><span class="tl-date">20 avril · S08</span><br /><span class="tl-what">Présentation intermédiaire</span> <span class="tl-meta">· évaluée · devant commanditaires</span></li>
-        <li class="rose"><span class="tl-date">27 avril · S09</span><br /><span class="tl-what">Objectif &amp; livrable</span> <span class="tl-meta">· rendu intermédiaire</span></li>
-        <li><span class="tl-date">25 mai · S13</span><br /><span class="tl-what">Plan d'action + livrable final + présentation</span> <span class="tl-meta">· évaluation finale · devant commanditaires</span></li>
-      </ul>
+      <div class="datesgrid">
+        <div class="dcard"><span class="d-date">2 mars · S02</span><span class="d-what">Constitution des groupes</span><span class="d-meta">Padlet</span></div>
+        <div class="dcard"><span class="d-date">7 mars</span><span class="d-what">Slide prénom finalisée</span><span class="d-meta">Padlet</span></div>
+        <div class="dcard rose"><span class="d-date">16 mars · S04</span><span class="d-what">Analyse de l'existant — individuelle</span><span class="d-meta">Rendu intermédiaire</span></div>
+        <div class="dcard rose"><span class="d-date">23 mars · S05</span><span class="d-what">Analyse de l'existant — collective</span><span class="d-meta">Rendu de groupe</span></div>
+        <div class="dcard rose"><span class="d-date">6 avril · S06</span><span class="d-what">Analyse de l'existant en 180° — 1 slide</span><span class="d-meta">Support de pitch</span></div>
+        <div class="dcard rose"><span class="d-date">13 avril · S07</span><span class="d-what">Dossier de faisabilité + 1 slide</span><span class="d-meta">Rendu intermédiaire</span></div>
+        <div class="dcard eval"><span class="d-date">20 avril · S08</span><span class="d-what">Présentation intermédiaire</span><span class="d-meta eval">Évaluée · devant commanditaires</span></div>
+        <div class="dcard rose"><span class="d-date">27 avril · S09</span><span class="d-what">Objectif &amp; livrable</span><span class="d-meta">Rendu intermédiaire</span></div>
+        <div class="dcard eval"><span class="d-date">25 mai · S13</span><span class="d-what">Plan d'action + livrable final + présentation</span><span class="d-meta eval">Évaluation finale · commanditaires</span></div>
+      </div>
     </div>
   </section>
 </div>

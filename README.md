@@ -13,7 +13,7 @@ Ta mission :
 
 ## Ce que c'est
 
-Page d'accueil interactive du cours « Professionnalisation & intervention » (UNIGE, FPSE, code 752501, Printemps 2027), destinée à être **intégrée en iframe en tête du Moodle** du cours. Elle remplace une présentation Genially. Charte graphique FPSE/UNIGE (teal `#00B1AE` / `#00857F`, rose `#CF0063`, police TheSans).
+Page d'accueil interactive du cours « Professionnalisation & intervention » (UNIGE, FPSE, code 752501, Printemps 2027), destinée à être **intégrée en iframe en tête du Moodle** du cours. Elle remplace une présentation Genially. Charte graphique FPSE/UNIGE (teal `#00B1AE` / `#00857F`, rose `#D80669`, police TheSans).
 
 Scène fixe **16:9 (1600×900)** auto-redimensionnée au viewport (letterbox sombre). Hub central à 7 tuiles + timeline cliquable ; 7 vues de section ; navigation par hash (`#plan`, `#evaluation`…), pastilles 1–7 dans chaque en-tête, clavier (←/→ entre sections, Échap = accueil).
 
@@ -58,7 +58,7 @@ Pour les modifier : tout est dans `index.html`, sections `<!-- ===== PLAN ===== 
 ## Design tokens (si retouches)
 
 Définis dans `tokens/colors.css` & co, consommés via `var(--…)` :
-`--teal:#00B1AE` · `--teal-deep:#00857F` · `--rose:#CF0063` · `--rose-deep:#A8004F` · `--ink:#172033` · `--muted:#5A6477` · `--line:#E4E7EC` · fonds teintés `--bg-teal:#EAF6F5` / `--bg-rose:#FBEAF1` · rayon cartes 14px · TheSans 300/400/600/700/800.
+`--teal:#00B1AE` · `--teal-deep:#00857F` · `--rose:#D80669` · `--rose-deep:#A60551` · `--ink:#172033` · `--muted:#5A6477` · `--line:#E4E7EC` · fonds teintés `--bg-teal:#EAF6F5` / `--bg-rose:#FBEAF1` · rayon cartes 14px · TheSans 300/400/600/700/800.
 
 ## Fidélité
 
